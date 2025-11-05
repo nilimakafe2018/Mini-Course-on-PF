@@ -14,7 +14,7 @@ function Header() {
       <nav className="header-right">
         <a 
             href="https://www.processfeedback.org/about/"
-            target="_blank" //open in the new tab so my my current app opens still 
+            target="_blank" //pf about page will open in the new tab so my my current app opens still 
         >
             About Process Feedback 
         </a>
