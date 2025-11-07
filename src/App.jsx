@@ -1,16 +1,18 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import { useState, useEffect } from "react";
-import "./App.css";
 import ContactUsForm from "./components/ContactUsForm/ContactUsForm";
-
+import CourseVideo from "./components/CourseVideo/CourseVideo";
+import Header from "./components/Header/Header";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import React from "react";
+import "./App.css";
 
 function Home() {
   const[fullname, setFullName] = useState("");
   const[email, setEmail] = useState("");
   const[error, setError] = useState("");
   const[startCourse, setStartCourse] = useState(false);
+  const navigate = useNavigate();
 
   const handleStartCourse = () =>{
     if(!fullname || !email){
@@ -20,6 +22,7 @@ function Home() {
 
     setError("");
     setStartCourse(true);
+    navigate("/course")
 
   }
 
@@ -77,6 +80,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<ContactUsForm/>} />
+        <Route path="/course" element={<CourseVideo/>} />
       </Routes>
     </Router>
   );
