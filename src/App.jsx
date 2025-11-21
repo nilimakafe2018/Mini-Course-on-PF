@@ -7,6 +7,7 @@ import QuizQuestion3 from "./components/QuizQuestions/QuizQuestion3";
 import QuizQuestion4 from "./components/QuizQuestions/QuizQuestion4";
 import QuizQuestion5 from "./components/QuizQuestions/QuizQuestion5";
 import QuizQuestion6 from "./components/QuizQuestions/QuizQuestion6";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import React, { useState } from "react";
 import "./App.css";
@@ -86,20 +87,25 @@ function App() {
 
   return (
     <Router>
-      {/*my navbar will be visible always because I placed <Header /> outside of <Routes></Routes>*/}
-      <Header /> 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<ContactUsForm />} />
-        <Route path="/course" element={<CourseVideo />} />
-        <Route path="/quiz1" element={<QuizQuestion1 saveAnswer={saveAnswer} />} />
-        <Route path="/quiz2" element={<QuizQuestion2 saveAnswer={saveAnswer} />} />
-        <Route path="/quiz3" element={<QuizQuestion3 saveAnswer={saveAnswer} />} />
-        <Route path="/quiz4" element={<QuizQuestion4 saveAnswer={saveAnswer} />} />
-        <Route path="/quiz5" element={<QuizQuestion5 saveAnswer={saveAnswer} />} />
-        <Route path="/quiz6" element={<QuizQuestion6 saveAnswer={saveAnswer} />} />
-      </Routes>
+      <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+        {/*my navbar will be visible always because I placed <Header /> outside of <Routes></Routes>*/}
+        <Header />
+        <div style={{flex:1}}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<ContactUsForm />} />
+            <Route path="/course" element={<CourseVideo />} />
+            <Route path="/quiz1" element={<QuizQuestion1 saveAnswer={saveAnswer} />} />
+            <Route path="/quiz2" element={<QuizQuestion2 saveAnswer={saveAnswer} />} />
+            <Route path="/quiz3" element={<QuizQuestion3 saveAnswer={saveAnswer} />} />
+            <Route path="/quiz4" element={<QuizQuestion4 saveAnswer={saveAnswer} />} />
+            <Route path="/quiz5" element={<QuizQuestion5 saveAnswer={saveAnswer} />} />
+            <Route path="/quiz6" element={<QuizQuestion6 saveAnswer={saveAnswer} />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 }
