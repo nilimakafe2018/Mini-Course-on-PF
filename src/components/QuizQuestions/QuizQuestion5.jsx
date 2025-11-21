@@ -11,15 +11,15 @@ function QuizQuestion5({ saveAnswer }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [error, setError] = useState("");
 
-  const question = "What is the main purpose of the Process Feedback mini-course?";
+  const question = "On the report page, in the text-added and text-removed bubble chart, what does the red bubble represent??";
   const options = [
-    "To learn React",
-    "To get familiar with Process Feedback application",
-    "To learn CSS Grid and Flexbox",
-    "To submit assignments automatically"
+    "Text removed",
+    "Text modified",
+    "No change",
+    "Text added"
   ];
 
-  const correctAnswer = "To get familiar with Process Feedback application";
+  const correctAnswer = "Text removed";
 
   const handleNext = () => {
     if (!selectedOption) {
