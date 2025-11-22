@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Option from "./Option"; // importing reusable child component
 import Button from "../Button/Button";
 import Header from "../Header/Header.jsx";
-import "./QuizQuestion.css";
-
 
 
 function QuizQuestion4({ saveAnswer }) {
@@ -21,10 +19,10 @@ function QuizQuestion4({ saveAnswer }) {
   const correctAnswer = "Flase";
 
   const handleNext = () => {
-    if (!selectedOption) {
-      setError("Please select an answer before proceeding.");
-      return;
-    }
+    // if (!selectedOption) {
+    //   setError("Please select an answer before proceeding.");
+    //   return;
+    // }
 
     setError("");
     // Pass result (true/false) to parent App or central state
@@ -53,7 +51,7 @@ function QuizQuestion4({ saveAnswer }) {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <Button text="Next" onClick={handleNext} />
+      {/* <Button text="Next" onClick={handleNext} /> */}
     </div>
   );
 }

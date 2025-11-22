@@ -20,10 +20,10 @@ function QuizQuestion1({ saveAnswer }) {
   const correctAnswer = "To get familiar with Process Feedback application";
 
   const handleNext = () => {
-    if (!selectedOption) {
-      setError("Please select an answer before proceeding.");
-      return;
-    }
+    // if (!selectedOption) {
+    //   setError("Please select an answer before proceeding.");
+    //   return;
+    // }
     setError("");
 
     // Pass result (true/false) to parent App
@@ -52,7 +52,7 @@ function QuizQuestion1({ saveAnswer }) {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <Button text="Next" onClick={handleNext} />
+      {/* <Button text="Next" onClick={handleNext} /> */}
     </div>
   );
 }

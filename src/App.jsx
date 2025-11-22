@@ -20,10 +20,10 @@ function Home() {
 
 
   const handleStartCourse = () => {
-    if (!fullname || !email) {
-      setError("Please enter both your fullname and email.");
-      return;
-    }
+    // if (!fullname || !email) {
+    //   setError("Please enter both your fullname and email.");
+    //   return;
+    // }
 
     setError("");
     navigate("/course")
@@ -96,12 +96,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<ContactUsForm />} />
             <Route path="/course" element={<CourseVideo />} />
-            <Route path="/quiz1" element={<QuizQuestion1 saveAnswer={saveAnswer} />} />
-            <Route path="/quiz2" element={<QuizQuestion2 saveAnswer={saveAnswer} />} />
+            {/* <Route path="/quiz1" element={<QuizQuestion1 saveAnswer={saveAnswer} />} /> */}
+            {/* <Route path="/quiz2" element={<QuizQuestion2 saveAnswer={saveAnswer} />} />
             <Route path="/quiz3" element={<QuizQuestion3 saveAnswer={saveAnswer} />} />
             <Route path="/quiz4" element={<QuizQuestion4 saveAnswer={saveAnswer} />} />
             <Route path="/quiz5" element={<QuizQuestion5 saveAnswer={saveAnswer} />} />
-            <Route path="/quiz6" element={<QuizQuestion6 saveAnswer={saveAnswer} />} />
+            <Route path="/quiz6" element={<QuizQuestion6 saveAnswer={saveAnswer} />} /> */}
           </Routes>
         </div>
         <Footer />
