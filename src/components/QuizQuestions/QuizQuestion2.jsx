@@ -21,10 +21,10 @@ function QuizQuestion2({saveAnswer}) {
   const correctAnswer = "Full Report";
 
   const handleNext = () => {
-    if (!selectedOption) {
-      setError("Please select an answer before proceeding.");
-      return;
-    }
+    // if (!selectedOption) {
+    //   setError("Please select an answer before proceeding.");
+    //   return;
+    // }
 
     setError("");
     saveAnswer("q2", selectedOption === correctAnswer);
@@ -51,7 +51,7 @@ function QuizQuestion2({saveAnswer}) {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <Button text="Next" onClick={handleNext} />
+      {/* <Button text="Next" onClick={handleNext} /> */}
     </div>
   );
 }
