@@ -42,7 +42,6 @@ function CourseVideo() {
   const [flagQuiz6Correct, setFlagQuiz6Correct] = useState(false);
 
   function quiz1ChoiceSelected(correctFlag) {
-    console.log("Correct flag", correctFlag);
     setFlagQuiz1Done(true);
     setFlagQuiz1Correct(correctFlag);
     setErrorMessage(null);
@@ -74,12 +73,17 @@ function CourseVideo() {
   }
 
   const handleNext = () => {
-
     // handle next click on login
     if (changePages === 0) {
+      if (!window.fullname || !window.email) {
+        window.loginSetError("Please enter your name and email.");
+        return;
+      }
       setChangePages(1);
       return;
-    }
+
+    };
+
 
     // handle next click on video
     if (changePages === 1) {
@@ -96,11 +100,10 @@ function CourseVideo() {
       }
 
       if (flagQuiz1Done) {
-        console.log("quiz 1 done", flagQuiz1Correct);
         if (flagQuiz1Correct) {
           setScore(score + 1);
         }
-        console.log("Score", score)
+    
         setChangePages(3);
         return;
       }
@@ -115,14 +118,11 @@ function CourseVideo() {
       }
 
       if (flagQuiz2Done) {
-
-
         if (flagQuiz2Correct) {
           setScore(score + 1);
         }
-        console.log("Score", score)
+    
         setChangePages(4);
-        console.log(changePages == 4)
         return;
       }
     }
@@ -140,7 +140,7 @@ function CourseVideo() {
         if (flagQuiz3Correct) {
           setScore(score + 1);
         }
-        console.log("Score", score)
+        
         setChangePages(5);
         return;
       }
@@ -159,7 +159,7 @@ function CourseVideo() {
         if (flagQuiz4Correct) {
           setScore(score + 1);
         }
-        console.log("Score", score)
+      
         setChangePages(6);
         return;
       }
@@ -178,7 +178,7 @@ function CourseVideo() {
         if (flagQuiz5Correct) {
           setScore(score + 1);
         }
-        console.log("Score before quiz 5", score)
+        
         setChangePages(7);
         return;
       }
@@ -197,7 +197,7 @@ function CourseVideo() {
         if (flagQuiz6Correct) {
           setScore(score + 1);
         }
-        console.log("Score", score)
+        
         setChangePages(8);
         return;
       }
@@ -253,10 +253,10 @@ function CourseVideo() {
           }
 
           {changePages === 8 &&
-            <div><ShowResult score={score}/></div>
+            <div><ShowResult score={score} /></div>
           }
 
-          {changePages !== 10 && (
+          {changePages !== 8 && (
             <>
               {errorMessage &&
                 <div style={{ color: "red" }}>

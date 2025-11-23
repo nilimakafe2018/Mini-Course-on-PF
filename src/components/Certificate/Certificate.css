@@ -77,3 +77,19 @@
   font-size: 20px;
   margin: 6px 0;
 }
+
+/* Clapping animation */
+.clap-emoji {
+  display: inline-block;
+  margin-left: 10px;
+  animation: clapBounce 1s infinite;
+  font-size: 28px; /* size of the emoji */
+}
+
+@keyframes clapBounce {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-15deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-5px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
