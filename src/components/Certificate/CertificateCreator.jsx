@@ -29,7 +29,10 @@ function CertificateCreator() {
 
   return (
     <div className="certificate-container">
-      <h2>Congratulations, You passed!</h2>
+      <h2>
+        Congratulations, You passed!
+        <span className="clap-emoji">👏</span>
+      </h2>
       <h4>Create Your Certificate! Please don't forget to take a screenshot of your certificate and send it to your professor.</h4>
 
       <div className="input-group">

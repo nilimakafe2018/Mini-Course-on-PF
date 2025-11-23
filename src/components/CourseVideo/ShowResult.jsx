@@ -1,25 +1,21 @@
 import React from "react";
 import CertificatePreview from "../Certificate/CertificatePreview";
 import CertificateCreator from "../Certificate/CertificateCreator";
+import ReDo from "./ReDo";
 
 const maxScore = 3;
 
-function ShowResult({score }) {
-
+function ShowResult({ score }) {
     console.log("score for result", score);
 
     return (
-
-        score >= maxScore ?
-            <>
-        
-                <CertificateCreator />
-
-            </> :
-            <>
-                <>Please try again</>
-            </>
-
-    )
+        score >= maxScore ? (
+            <CertificateCreator />
+        ) : (
+            <ReDo /> //Rendering the ReDo component with the button
+        )
+    );
 }
+
 export default ShowResult;
+

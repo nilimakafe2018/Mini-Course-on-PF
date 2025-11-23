@@ -3,6 +3,11 @@ import React, { useState } from "react";
 function Login() {
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
+  //store values globally so CourseVideo can check them
+  window.fullname = fullname;
+  window.email = email;
 
   return (
     <div
@@ -41,6 +46,12 @@ function Login() {
           onChange={(e) => setEmail(e.target.value)}
           style={{ width: "350px", padding: "10px" }}
         />
+
+        {error && <p style={{color:"red"}}>{error}</p>}
+
+        {/* showing error to parent by attaching it */}
+        {(window.loginSetError = setError)}
+
       </div>
     </div>
   );
