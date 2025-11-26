@@ -18,6 +18,9 @@
   height: 70px;
 }
 
+.header-right a { 
+  padding-right: 10px; }
+
 /* Navigation (right side) */
 .header-right {
   display: flex;
