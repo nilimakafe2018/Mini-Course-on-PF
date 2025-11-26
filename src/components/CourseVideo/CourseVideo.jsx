@@ -6,7 +6,7 @@ import QuizQuestion3 from "../QuizQuestions/QuizQuestion3";
 import QuizQuestion4 from "../QuizQuestions/QuizQuestion4";
 import QuizQuestion5 from "../QuizQuestions/QuizQuestion5";
 import QuizQuestion6 from "../QuizQuestions/QuizQuestion6";
-import "../Certificate/certificate.css";
+import "../Certificate/Certificate.css";
 import ShowResult from "./ShowResult";
 import Login from "./Login";
 import Video from "./Video";
