@@ -1,37 +1,58 @@
-import { useNavigate } from "react-router-dom"; //importing navigate hook
+import { useNavigate } from "react-router-dom"; 
 import logo from "../../assets/PFLogo.png";
 import "./Header.css";
 
 function Header() {
-  // Initialize navigation
   const navigate = useNavigate();
 
-  //click handler to go to home page
+  // Click handler for logo → home page
   const handleLogoClick = () => {
     navigate("/");
-  }
+  };
+
+  // Open external PF about page
+  const handleAboutClick = () => {
+    window.open("https://www.processfeedback.org/about/", "_blank");
+  };
+
+  // Navigate to internal contact page
+  const handleContactClick = () => {
+    navigate("/contact");
+  };
 
   return (
     <header className="header">
-      {/*PF logo on the left side in navbar*/}
-      <div className="header-left">
-        <img src={logo} alt="Process Feedback Logo" className="logo"
-          onClick={handleLogoClick} //when click on logo, it navigates home page
-          style={{ cursor: "pointer" }} //making to look clickable
-        />
 
+      {/* Left: Logo */}
+      <div className="header-left">
+        <img
+          src={logo}
+          alt="Process Feedback Logo"
+          className="logo"
+          onClick={handleLogoClick}
+          style={{ cursor: "pointer" }}
+        />
       </div>
 
-      {/*Navigaion links on the right side in navbar*/}
+      {/* Right: Navigation items */}
       <nav className="header-right">
-        <a
-          href="https://www.processfeedback.org/about/"
-          target="_blank" //pf about page will open in the new tab so my my current app opens still 
+        <div
+          className="nav-item"
+          onClick={handleAboutClick}
+          style={{ cursor: "pointer" }}
         >
           About Process Feedback
-        </a>
-        <a href="/contact">Contact Us</a>
+        </div>
+
+        <div
+          className="nav-item"
+          onClick={handleContactClick}
+          style={{ cursor: "pointer" }}
+        >
+          Contact Us
+        </div>
       </nav>
+
     </header>
   );
 }
