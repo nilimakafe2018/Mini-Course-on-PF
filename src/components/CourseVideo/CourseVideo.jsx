@@ -1,11 +1,7 @@
 import Button from "../Button/Button"; //importing my child component 
 import React, { useState } from "react";
-import QuizQuestion1 from "../QuizQuestions/QuizQuestion1";
-import QuizQuestion2 from "../QuizQuestions/QuizQuestion2";
-import QuizQuestion3 from "../QuizQuestions/QuizQuestion3";
-import QuizQuestion4 from "../QuizQuestions/QuizQuestion4";
-import QuizQuestion5 from "../QuizQuestions/QuizQuestion5";
-import QuizQuestion6 from "../QuizQuestions/QuizQuestion6";
+import QuizQuestion from "../QuizQuestions/QuizQuestion";
+import quizData from "../QuizQuestions/quizData.json";
 import "../Certificate/Certificate.css";
 import ShowResult from "./ShowResult";
 import Login from "./Login";
@@ -237,28 +233,27 @@ function CourseVideo() {
 
           {changePages === 2 &&
             //choiceSelected prop passes callback functions to quiz components
-
-            <div><QuizQuestion1 choiceSelected={quiz1ChoiceSelected} /></div>
+            <div><QuizQuestion data={quizData[0]} choiceSelected={quiz1ChoiceSelected} /></div>
           }
 
           {changePages === 3 &&
-            <div><QuizQuestion2 choiceSelected={quiz2ChoiceSelected} /></div>
+            <div><QuizQuestion data={quizData[1]} choiceSelected={quiz2ChoiceSelected} /></div>
           }
 
           {changePages === 4 &&
-            <div><QuizQuestion3 choiceSelected={quiz3ChoiceSelected} /></div>
+            <div><QuizQuestion data={quizData[2]} choiceSelected={quiz3ChoiceSelected} /></div>
           }
 
           {changePages === 5 &&
-            <div><QuizQuestion4 choiceSelected={quiz4ChoiceSelected} /></div>
+            <div><QuizQuestion data={quizData[3]} choiceSelected={quiz4ChoiceSelected} /></div>
           }
 
           {changePages === 6 &&
-            <div><QuizQuestion5 choiceSelected={quiz5ChoiceSelected} /></div>
+            <div><QuizQuestion data={quizData[4]} choiceSelected={quiz5ChoiceSelected} /></div>
           }
 
           {changePages === 7 &&
-            <div><QuizQuestion6 choiceSelected={quiz6ChoiceSelected} /></div>
+            <div><QuizQuestion data={quizData[5]} choiceSelected={quiz6ChoiceSelected} /></div>
           }
 
           {changePages === 8 &&
