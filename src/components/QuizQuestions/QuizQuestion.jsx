@@ -31,7 +31,7 @@ function QuizQuestion({ data, choiceSelected }) {
           <Option
             key={option} 
             optionText={option}
-            selectedOption={selectedOption} //pass current selected option
+            selectedOption={selectedOption} //passing current selected option
             onSelect={handleSelectionChange} //callback when user select an option
           />
         ))}

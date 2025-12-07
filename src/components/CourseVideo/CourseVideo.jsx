@@ -18,64 +18,21 @@ function CourseVideo() {
 
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //Tracking whether the login step and each quiz are completed
-  const [flagLoginDone, setFlagLoginDone] = useState(false);
-  const [flagQuiz1Done, setFlagQuiz1Done] = useState(false);
-  const [flagQuiz2Done, setFlagQuiz2Done] = useState(false);
-  const [flagQuiz3Done, setFlagQuiz3Done] = useState(false);
-  const [flagQuiz4Done, setFlagQuiz4Done] = useState(false);
-  const [flagQuiz5Done, setFlagQuiz5Done] = useState(false);
-  const [flagQuiz6Done, setFlagQuiz6Done] = useState(false);
+  //Tracking whether each quiz are completed
+  const flagQuizzesDone = []
 
   //tracking whether the selected answer is correct.
-  const [flagQuiz1Correct, setFlagQuiz1Correct] = useState(false);
-  const [flagQuiz2Correct, setFlagQuiz2Correct] = useState(false);
-  const [flagQuiz3Correct, setFlagQuiz3Correct] = useState(false);
-  const [flagQuiz4Correct, setFlagQuiz4Correct] = useState(false);
-  const [flagQuiz5Correct, setFlagQuiz5Correct] = useState(false);
-  const [flagQuiz6Correct, setFlagQuiz6Correct] = useState(false);
+  const flagQuizCorrect = [];
 
-  //function callback
-  //These functions are called by each quiz component when a user select an answer
-  //correctFlag is true or false, depending on the answer
+  //function that runs when a user select answer
   //Marks the quiz as done, record correctness and clear any previous message
-  function quiz1ChoiceSelected(correctFlag) {
-    setFlagQuiz1Done(true);
-    setFlagQuiz1Correct(correctFlag);
+  function quizScoreObtained(correctFlag) {
+    flagQuizzesDone[changePages - 2] = true;
+    flagQuizCorrect[changePages - 2] = correctFlag;
     setErrorMessage(null);
   }
 
-  function quiz2ChoiceSelected(correctFlag) {
-    setFlagQuiz2Done(true);
-    setFlagQuiz2Correct(correctFlag);
-    setErrorMessage(null);
-  }
-
-  function quiz3ChoiceSelected(correctFlag) {
-    setFlagQuiz3Done(true);
-    setFlagQuiz3Correct(correctFlag);
-    setErrorMessage(null);
-  }
-
-  function quiz4ChoiceSelected(correctFlag) {
-    setFlagQuiz4Done(true);
-    setFlagQuiz4Correct(correctFlag);
-    setErrorMessage(null);
-  }
-
-  function quiz5ChoiceSelected(correctFlag) {
-    setFlagQuiz5Done(true);
-    setFlagQuiz5Correct(correctFlag);
-    setErrorMessage(null);
-  }
-
-  function quiz6ChoiceSelected(correctFlag) {
-    setFlagQuiz6Done(true);
-    setFlagQuiz6Correct(correctFlag);
-    setErrorMessage(null);
-  }
-
-  //handles click on the next button. This function controls navigation through the pages
+  //handles click on the next button, function to controls navigation through the pages
   const handleNext = () => {
 
     //handle next click on login
@@ -95,117 +52,25 @@ function CourseVideo() {
       return;
     }
 
-    // quiz 1, check if the quiz is done, if correct increase score and go to next page
-    if (changePages === 2) {
+    // quiz 1 to 6, check if the quiz is done, if correct increase score and go to next page
+    if (changePages >= 2 && changePages < quizData.length + 2) {
 
-      if (!flagQuiz1Done) {
+      if (!flagQuizzesDone[changePages - 2]) {
         setErrorMessage("Please complete the quiz first!")
         return;
       }
 
-      if (flagQuiz1Done) {
-        if (flagQuiz1Correct) {
+      //if user answerd, check if the answer is correct and update socre
+      if (flagQuizzesDone[changePages - 2]) {
+        if (flagQuizCorrect[changePages - 2]) {
           setScore(score + 1);
         }
 
-        setChangePages(3);
+        setChangePages(changePages + 1);
         return;
       }
     }
 
-    // click on quiz 2
-    if (changePages === 3) {
-
-      if (!flagQuiz2Done) {
-        setErrorMessage("Please complete the quiz first!")
-        return;
-      }
-
-      if (flagQuiz2Done) {
-        if (flagQuiz2Correct) {
-          setScore(score + 1);
-        }
-
-        setChangePages(4);
-        return;
-      }
-    }
-
-    // click on quiz 3
-    if (changePages === 4) {
-
-      if (!flagQuiz3Done) {
-        setErrorMessage("Please complete the quiz first!")
-        return;
-      }
-
-      if (flagQuiz3Done) {
-
-        if (flagQuiz3Correct) {
-          setScore(score + 1);
-        }
-
-        setChangePages(5);
-        return;
-      }
-    }
-
-    // click on quiz 4
-    if (changePages === 5) {
-
-      if (!flagQuiz4Done) {
-        setErrorMessage("Please complete the quiz first!")
-        return;
-      }
-
-      if (flagQuiz4Done) {
-
-        if (flagQuiz4Correct) {
-          setScore(score + 1);
-        }
-
-        setChangePages(6);
-        return;
-      }
-    }
-
-    // click on quiz 5
-    if (changePages === 6) {
-
-      if (!flagQuiz5Done) {
-        setErrorMessage("Please complete the quiz first!")
-        return;
-      }
-
-      if (flagQuiz5Done) {
-
-        if (flagQuiz5Correct) {
-          setScore(score + 1);
-        }
-
-        setChangePages(7);
-        return;
-      }
-    }
-
-    // click on quiz 6
-    if (changePages === 7) {
-
-      if (!flagQuiz6Done) {
-        setErrorMessage("Please complete the quiz first!")
-        return;
-      }
-
-      if (flagQuiz6Done) {
-
-        if (flagQuiz6Correct) {
-          setScore(score + 1);
-        }
-
-        setChangePages(8);
-        return;
-      }
-    }
   };
 
   return (
@@ -231,32 +96,12 @@ function CourseVideo() {
             <div><Video /></div>
           }
 
-          {changePages === 2 &&
-            //choiceSelected prop passes callback functions to quiz components
-            <div><QuizQuestion data={quizData[0]} choiceSelected={quiz1ChoiceSelected} /></div>
+          {changePages >= 2 && changePages < quizData.length + 2 &&
+            //passing question from json and passing callback function
+            <div><QuizQuestion data={quizData[changePages - 2]} choiceSelected={quizScoreObtained} /></div>
           }
 
-          {changePages === 3 &&
-            <div><QuizQuestion data={quizData[1]} choiceSelected={quiz2ChoiceSelected} /></div>
-          }
-
-          {changePages === 4 &&
-            <div><QuizQuestion data={quizData[2]} choiceSelected={quiz3ChoiceSelected} /></div>
-          }
-
-          {changePages === 5 &&
-            <div><QuizQuestion data={quizData[3]} choiceSelected={quiz4ChoiceSelected} /></div>
-          }
-
-          {changePages === 6 &&
-            <div><QuizQuestion data={quizData[4]} choiceSelected={quiz5ChoiceSelected} /></div>
-          }
-
-          {changePages === 7 &&
-            <div><QuizQuestion data={quizData[5]} choiceSelected={quiz6ChoiceSelected} /></div>
-          }
-
-          {changePages === 8 &&
+          {changePages === quizData.length + 2 &&
             <div><ShowResult score={score} /></div>
           }
 
